@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-import ListOfUsers from '../../components/ListOfUsers'
+import ListOfTodos from '../../components/ListOfTodos'
 import styles from './Dashboard.module.scss'
 
 const Dashboard = (): ReactElement => {
@@ -12,7 +12,9 @@ const Dashboard = (): ReactElement => {
       </div>
       <div className={styles.main}>
         <div className={styles.content}>
-          <div className={styles.content__wrapeer}></div>
+          <div className={styles.content__wrapeer}>
+            <ListOfTodos />
+          </div>
         </div>
       </div>
       <div className={styles.footer}>

@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react'
-import { User } from '../../constants/TYPES'
+import { Todo, User } from '../../constants/TYPES'
+import { urlUsers } from '../../constants/URLS'
 import { useHttp } from '../../hooks/useHttp'
 import Loader from '../Loader'
 import styles from './ListOfUsers.module.scss'
@@ -9,15 +10,14 @@ const ListOfUsers = (): ReactElement => {
   const request = useHttp()
   const getUsers = async () => {
     try {
-      const data: Array<User> | null = await request('https://jsonplaceholder.typicode.com/users/')
-      if (data === null || data === undefined) {
+      const data = await request<User>(urlUsers)
+
+      if (data === null) {
         throw new Error()
       }
+
       setListOfUsers(data)
-      // await fetch('https://jsonplaceholder.typicode.com/users/')
-      //   .then((response) => response.json())
-      //   .then((data: Array<User>) => setListOfUsers(data))
-      //   .then(() => console.log('listOfUsers', listOfUsers))
+
       console.log('list', listOfUsers)
     } catch {
       console.log('Error in fetch')

@@ -1,10 +1,15 @@
-import { User } from '../constants/TYPES'
+import { Todo, User } from '../constants/TYPES'
 
 export const useHttp = () => {
-  const request = async (url: string, method = 'GET', body = null, headers = {}) => {
+  const request = async <T>(
+    url: string,
+    method = 'GET',
+    body = null,
+    headers = {}
+  ): Promise<Array<T> | null> => {
     try {
       const responce: Response = await fetch(url, { method, body, headers })
-      const data: Array<User> = await responce.json()
+      const data: Array<T> = await responce.json()
       if (!responce.ok) {
         return null
       }
