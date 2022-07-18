@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react'
+import { InputHTMLAttributes, ReactElement, useEffect, useState } from 'react'
 import { Todo } from '../../constants/TYPES'
 import { urlTodos } from '../../constants/URLS'
 import { useHttp } from '../../hooks/useHttp'
@@ -35,6 +35,10 @@ const ListOfTodos = (): ReactElement => {
     initialiseData()
   }, [])
 
+  // const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   e.target.checked = !e.target.checked
+  // }
+
   return (
     <ul className={styles.list}>
       {listOfTodos.length === 0 ? (
@@ -43,7 +47,11 @@ const ListOfTodos = (): ReactElement => {
         listOfTodos.map((todo) => (
           <li key={todo.id} className={styles.list__item}>
             <div>
-              <input type='check-box' checked={todo.completed} />
+              <input
+                type='checkbox'
+                //  onChange={changeHandler}
+                checked={todo.completed}
+              />
             </div>
             <div>
               <span className={styles.subTitle}>UserID: </span>
