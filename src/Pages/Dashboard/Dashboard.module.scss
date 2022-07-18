@@ -6,13 +6,16 @@
   }
   .main {
     flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     .content {
-      padding: 3rem 0 1rem 0;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0 0 0;
       input {
+        display: block;
+        margin: 0 auto 1rem;
         width: 100%;
+        height: 1.5rem;
       }
     }
   }

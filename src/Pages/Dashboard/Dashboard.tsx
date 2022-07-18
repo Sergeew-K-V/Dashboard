@@ -16,10 +16,6 @@ const Dashboard = (): ReactElement => {
             <input type='text' />
             <ListOfUsers />
           </div>
-          <div>
-            <input type='text' />
-            <ListOfUsers />
-          </div>
         </div>
       </div>
       <div className={styles.footer}>

@@ -4,16 +4,15 @@ import styles from './ListOfUsers.module.scss'
 interface User {
   id: number
   name: string
-  age: number
-  gender?: 'male' | 'female'
+  username?: string
 }
 
 const ListOfUsers = (): ReactElement => {
   const [listOfUsers, setListOfUsers] = useState<Array<User>>([
-    { id: 1, name: 'Vlad', age: 23, gender: 'male' },
-    { id: 2, name: 'Kolya', age: 36, gender: 'male' },
-    { id: 3, name: 'Anna', age: 16, gender: 'female' },
-    { id: 4, name: 'Andrey', age: 33, gender: 'male' },
+    { id: 1, name: 'Vlad' },
+    { id: 2, name: 'Kolya' },
+    { id: 3, name: 'Anna' },
+    { id: 4, name: 'Andrey' },
   ])
 
   const getUsers = async () => {
@@ -34,8 +33,14 @@ const ListOfUsers = (): ReactElement => {
     <ul className={styles.list}>
       {listOfUsers.map((person) => (
         <li key={person.id} className={styles.list__item}>
-          <div>Name: {person.name}</div> | <div>Age: {person.age}</div> |{' '}
-          <div>Gender: {person.gender}</div>
+          <div>
+            <span className={styles.subTitle}>Name: </span>
+            {person.name}
+          </div>
+          ,{' '}
+          <div>
+            <span className={styles.subTitle}>Username: </span> {person.username}
+          </div>
         </li>
       ))}
     </ul>
