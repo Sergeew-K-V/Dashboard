@@ -12,7 +12,7 @@ const Dashboard = (): ReactElement => {
       </div>
       <div className={styles.main}>
         <div className={styles.content}>
-          <div>
+          <div className={styles.content__wrapeer}>
             <input type='text' />
             <ListOfUsers />
           </div>

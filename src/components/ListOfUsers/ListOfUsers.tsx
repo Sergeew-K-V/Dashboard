@@ -1,4 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react'
+import Loader from '../Loader'
 import styles from './ListOfUsers.module.scss'
 
 interface User {
@@ -8,12 +9,7 @@ interface User {
 }
 
 const ListOfUsers = (): ReactElement => {
-  const [listOfUsers, setListOfUsers] = useState<Array<User>>([
-    { id: 1, name: 'Vlad' },
-    { id: 2, name: 'Kolya' },
-    { id: 3, name: 'Anna' },
-    { id: 4, name: 'Andrey' },
-  ])
+  const [listOfUsers, setListOfUsers] = useState<Array<User>>([])
 
   const getUsers = async () => {
     try {
@@ -24,25 +20,38 @@ const ListOfUsers = (): ReactElement => {
     } catch {
       console.log('Error in fetch')
     }
-    return listOfUsers
   }
+
+  const initialiseData = () => {
+    setTimeout(() => {
+      getUsers()
+    }, 500)
+  }
+
   useEffect(() => {
-    getUsers()
-  }, [])
+    initialiseData()
+  }, [listOfUsers])
+
+  initialiseData()
+
   return (
     <ul className={styles.list}>
-      {listOfUsers.map((person) => (
-        <li key={person.id} className={styles.list__item}>
-          <div>
-            <span className={styles.subTitle}>Name: </span>
-            {person.name}
-          </div>
-          ,{' '}
-          <div>
-            <span className={styles.subTitle}>Username: </span> {person.username}
-          </div>
-        </li>
-      ))}
+      {listOfUsers.length === 0 ? (
+        <Loader />
+      ) : (
+        listOfUsers.map((person) => (
+          <li key={person.id} className={styles.list__item}>
+            <div>
+              <span className={styles.subTitle}>Name: </span>
+              {person.name}
+            </div>
+            ,{' '}
+            <div>
+              <span className={styles.subTitle}>Username: </span> {person.username}
+            </div>
+          </li>
+        ))
+      )}
     </ul>
   )
 }
