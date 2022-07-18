@@ -8,6 +8,7 @@ const Nav = (): ReactElement => {
       <div className={styles.navList}>
         <NavLink to={'/'}>Home</NavLink>
         <NavLink to={'/dashboard'}>Dashboard</NavLink>
+        <NavLink to={'/userspage'}>Users</NavLink>
       </div>
       <div className={styles.burger}></div>
     </nav>

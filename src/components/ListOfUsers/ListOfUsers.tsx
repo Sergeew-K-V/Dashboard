@@ -1,22 +1,24 @@
 import { ReactElement, useEffect, useState } from 'react'
+import { User } from '../../constants/TYPES'
+import { useHttp } from '../../hooks/useHttp'
 import Loader from '../Loader'
 import styles from './ListOfUsers.module.scss'
 
-interface User {
-  id: number
-  name: string
-  username?: string
-}
-
 const ListOfUsers = (): ReactElement => {
   const [listOfUsers, setListOfUsers] = useState<Array<User>>([])
-
+  const request = useHttp()
   const getUsers = async () => {
     try {
-      let data: []
-      await fetch('https://jsonplaceholder.typicode.com/users/')
-        .then((response) => response.json())
-        .then((data) => setListOfUsers(data))
+      const data: Array<User> | null = await request('https://jsonplaceholder.typicode.com/users/')
+      if (data === null || data === undefined) {
+        throw new Error()
+      }
+      setListOfUsers(data)
+      // await fetch('https://jsonplaceholder.typicode.com/users/')
+      //   .then((response) => response.json())
+      //   .then((data: Array<User>) => setListOfUsers(data))
+      //   .then(() => console.log('listOfUsers', listOfUsers))
+      console.log('list', listOfUsers)
     } catch {
       console.log('Error in fetch')
     }
@@ -30,9 +32,7 @@ const ListOfUsers = (): ReactElement => {
 
   useEffect(() => {
     initialiseData()
-  }, [listOfUsers])
-
-  initialiseData()
+  }, [])
 
   return (
     <ul className={styles.list}>
@@ -48,6 +48,10 @@ const ListOfUsers = (): ReactElement => {
             ,{' '}
             <div>
               <span className={styles.subTitle}>Username: </span> {person.username}
+            </div>
+            ,{' '}
+            <div>
+              <span className={styles.subTitle}>Phone: </span> {person.phone}
             </div>
           </li>
         ))
