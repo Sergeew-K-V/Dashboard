@@ -17,8 +17,6 @@ const ListOfUsers = (): ReactElement => {
       }
 
       setListOfUsers(data)
-
-      console.log('list', listOfUsers)
     } catch {
       console.log('Error in fetch')
     }

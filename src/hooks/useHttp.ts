@@ -1,5 +1,3 @@
-import { Todo, User } from '../constants/TYPES'
-
 export const useHttp = () => {
   const request = async <T>(
     url: string,
@@ -13,6 +11,7 @@ export const useHttp = () => {
       if (!responce.ok) {
         return null
       }
+      console.log('data', data)
       return data
     } catch (e: any) {
       return null
