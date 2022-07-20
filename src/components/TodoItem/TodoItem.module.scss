@@ -1,0 +1,13 @@
+.list__item {
+  margin: 0.2rem 0 0;
+  > div {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    .subTitle {
+      text-transform: uppercase;
+      font-weight: 600;
+      color: aqua;
+    }
+  }
+}
