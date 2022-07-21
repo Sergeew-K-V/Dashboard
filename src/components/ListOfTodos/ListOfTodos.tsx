@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { Todo } from '../../constants/TYPES'
 import { urlTodos } from '../../constants/URLS'
 import { useHttp } from '../../hooks/useHttp'
@@ -8,6 +8,7 @@ import styles from './ListOfTodos.module.scss'
 
 const ListOfTodos = (): ReactElement => {
   const [listOfTodos, setListOfTodos] = useState<Array<Todo>>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   const request = useHttp()
 
@@ -16,7 +17,8 @@ const ListOfTodos = (): ReactElement => {
       const data = await request<Todo>(urlTodos)
 
       if (data === null) {
-        throw new Error()
+        // throw new Error()
+        return null
       }
 
       setListOfTodos(data)
@@ -26,8 +28,10 @@ const ListOfTodos = (): ReactElement => {
   }
 
   const initialiseData = () => {
+    setLoading(true)
     setTimeout(() => {
       getTodos()
+      setLoading(false)
     }, 500)
   }
 
@@ -37,8 +41,10 @@ const ListOfTodos = (): ReactElement => {
 
   return (
     <ul className={styles.list}>
-      {listOfTodos.length === 0 ? (
+      {loading === true ? (
         <Loader />
+      ) : listOfTodos.length === 0 ? (
+        <div>No todos</div>
       ) : (
         listOfTodos.map((todo) => <TodoItem todo={todo} key={todo.id} />)
       )}
