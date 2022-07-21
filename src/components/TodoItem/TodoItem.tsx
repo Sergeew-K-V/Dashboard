@@ -6,23 +6,25 @@ const TodoItem = ({ todo }: TodoItemType): ReactElement => {
   const [finished, setFinished] = useState<boolean>(todo.completed)
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // event.preventDefault()
     setFinished(!finished)
   }
 
   return (
     <li className={styles.list__item}>
-      <div>
-        <input type='checkbox' onChange={changeHandler} checked={finished} />
+      <div className={styles.content}>
+        <div>
+          <input type='checkbox' onChange={changeHandler} checked={finished} />
+        </div>
+        <div>
+          <span className={styles.subTitle}>UserID: </span>
+          {todo.userId}
+        </div>
+        ,{' '}
+        <div>
+          <span className={styles.subTitle}>Title: </span> {todo.title}
+        </div>
       </div>
-      <div>
-        <span className={styles.subTitle}>UserID: </span>
-        {todo.userId}
-      </div>
-      ,{' '}
-      <div>
-        <span className={styles.subTitle}>Title: </span> {todo.title}
-      </div>
+      <button className={styles.delete}>&#x2715;</button>
     </li>
   )
 }

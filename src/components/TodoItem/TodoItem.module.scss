@@ -1,16 +1,23 @@
 .list__item {
   margin: 0.2rem 0 0;
-  > div {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    input {
-      cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  .content {
+    > div {
+      display: inline-block;
+      align-items: center;
+      input {
+        cursor: pointer;
+      }
+      .subTitle {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: aqua;
+      }
     }
-    .subTitle {
-      text-transform: uppercase;
-      font-weight: 600;
-      color: aqua;
+    .delete {
+      display: flex;
+      justify-content: end;
     }
   }
 }

@@ -8,7 +8,6 @@ import styles from './ListOfTodos.module.scss'
 
 const ListOfTodos = (): ReactElement => {
   const [listOfTodos, setListOfTodos] = useState<Array<Todo>>([])
-  // const [loading, setLoading] = useState<boolean>(false)
 
   const { request, loading, setLoading } = useHttp()
 
