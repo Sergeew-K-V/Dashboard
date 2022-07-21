@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react'
-import { Todo, User } from '../../constants/TYPES'
+import { User } from '../../constants/TYPES'
 import { urlUsers } from '../../constants/URLS'
 import { useHttp } from '../../hooks/useHttp'
 import Loader from '../Loader'
@@ -7,7 +7,7 @@ import styles from './ListOfUsers.module.scss'
 
 const ListOfUsers = (): ReactElement => {
   const [listOfUsers, setListOfUsers] = useState<Array<User>>([])
-  const request = useHttp()
+  const { request } = useHttp()
   const getUsers = async () => {
     try {
       const data = await request<User>(urlUsers)

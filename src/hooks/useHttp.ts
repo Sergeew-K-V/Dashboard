@@ -1,4 +1,8 @@
+import { useState } from 'react'
+
 export const useHttp = () => {
+  const [loading, setLoading] = useState<boolean>(false)
+
   const request = async <T>(
     url: string,
     method = 'GET',
@@ -17,5 +21,5 @@ export const useHttp = () => {
       return null
     }
   }
-  return request
+  return { request, loading, setLoading }
 }

@@ -8,16 +8,15 @@ import styles from './ListOfTodos.module.scss'
 
 const ListOfTodos = (): ReactElement => {
   const [listOfTodos, setListOfTodos] = useState<Array<Todo>>([])
-  const [loading, setLoading] = useState<boolean>(false)
+  // const [loading, setLoading] = useState<boolean>(false)
 
-  const request = useHttp()
+  const { request, loading, setLoading } = useHttp()
 
   const getTodos = async () => {
     try {
       const data = await request<Todo>(urlTodos)
 
       if (data === null) {
-        // throw new Error()
         return null
       }
 
