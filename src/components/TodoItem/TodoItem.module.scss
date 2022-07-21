@@ -4,6 +4,9 @@
     display: inline-block;
     justify-content: center;
     align-items: center;
+    input {
+      cursor: pointer;
+    }
     .subTitle {
       text-transform: uppercase;
       font-weight: 600;

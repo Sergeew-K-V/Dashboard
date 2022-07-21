@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import AddTodoForm from '../../components/AddTodoForm'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import ListOfTodos from '../../components/ListOfTodos'
@@ -14,6 +15,7 @@ const Dashboard = (): ReactElement => {
         <div className={styles.content}>
           <div className={styles.content__wrapeer}>
             <ListOfTodos />
+            <AddTodoForm />
           </div>
         </div>
       </div>

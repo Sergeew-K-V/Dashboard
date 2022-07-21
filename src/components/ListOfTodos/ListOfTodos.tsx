@@ -37,7 +37,11 @@ const ListOfTodos = (): ReactElement => {
 
   return (
     <ul className={styles.list}>
-      {listOfTodos.length === 0 ? <Loader /> : listOfTodos.map((todo) => <TodoItem todo={todo} />)}
+      {listOfTodos.length === 0 ? (
+        <Loader />
+      ) : (
+        listOfTodos.map((todo) => <TodoItem todo={todo} key={todo.id} />)
+      )}
     </ul>
   )
 }

@@ -1,0 +1,21 @@
+.form {
+  display: block;
+  border: 2px solid aqua;
+  padding: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  margin: 3rem 0 0 0;
+  justify-content: left;
+  .inputUserTodo {
+    width: 55%;
+  }
+  .inputUserCompleted {
+    cursor: pointer;
+  }
+  input {
+    margin: 0 0.5rem;
+  }
+  button {
+    cursor: pointer;
+  }
+}

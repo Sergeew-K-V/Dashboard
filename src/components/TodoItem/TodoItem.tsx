@@ -1,17 +1,19 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import { TodoItemType } from '../../constants/TYPES'
 import styles from './TodoItem.module.scss'
 
 const TodoItem = ({ todo }: TodoItemType): ReactElement => {
+  const [finished, setFinished] = useState<boolean>(todo.completed)
+
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault()
-    console.log('event.target.value', event.target)
+    // event.preventDefault()
+    setFinished(!finished)
   }
 
   return (
-    <li key={todo.id} className={styles.list__item}>
+    <li className={styles.list__item}>
       <div>
-        <input type='checkbox' onChange={changeHandler} checked={todo.completed} />
+        <input type='checkbox' onChange={changeHandler} checked={finished} />
       </div>
       <div>
         <span className={styles.subTitle}>UserID: </span>
