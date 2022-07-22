@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement } from 'react'
 import { TodoItemPropType } from '../../constants/TYPES'
 import styles from './TodoItem.module.scss'
 

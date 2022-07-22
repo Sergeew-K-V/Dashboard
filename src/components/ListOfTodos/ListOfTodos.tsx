@@ -1,20 +1,16 @@
-import { ReactElement, useState } from 'react'
-import { Todo } from '../../constants/TYPES'
+import { ReactElement, useEffect, useState } from 'react'
+import { ListOfTodoPropType } from '../../constants/TYPES'
 import { useHttp } from '../../hooks/useHttp'
 import Loader from '../Loader'
 import TodoItem from '../TodoItem'
 import styles from './ListOfTodos.module.scss'
 
-const ListOfTodos = (): ReactElement => {
+const ListOfTodos = ({ listOfTodos, setListOfTodos }: ListOfTodoPropType): ReactElement => {
   const { loading, setLoading } = useHttp()
-  const [listOfTodos, setListOfTodos] = useState<Todo[]>([
-    { id: 1, title: 'To complete this task', completed: false },
-    { id: 2, title: 'To delete this task', completed: true },
-  ])
 
   const changeHandler = (id: number, checked: boolean) => {
     setListOfTodos((prev) => {
-      return prev.map((todo, _, prev) => {
+      return prev.map((todo) => {
         if (todo.id === id && todo.completed !== checked) {
           todo.completed = !todo.completed
         }
@@ -24,9 +20,19 @@ const ListOfTodos = (): ReactElement => {
   }
 
   const deleteTodo = (id: number) => {
-    console.log('todo.id', id)
     setListOfTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
+
+  const initialiseData = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
+  }
+
+  useEffect(() => {
+    initialiseData()
+  }, [])
 
   return (
     <ul className={styles.list}>
