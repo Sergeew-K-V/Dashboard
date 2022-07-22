@@ -34,18 +34,11 @@ const AddTodoForm = (): ReactElement => {
         className={styles.inputUserTodo}
         type={'text'}
         placeholder='Write the description of todo'
-        defaultValue={userTodo}
         value={userTodo}
         onChange={onTextChangeHandler}
         id='text'
       />
-      <input
-        type={'number'}
-        placeholder='UserId'
-        defaultValue={userId}
-        value={userId}
-        onChange={onNumberChangeHandler}
-      />
+      <input type={'number'} placeholder='UserId' value={userId} onChange={onNumberChangeHandler} />
       <input
         className={styles.inputUserCompleted}
         type={'checkbox'}
