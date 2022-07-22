@@ -1,30 +1,25 @@
-import { ReactElement, useState } from 'react'
-import { TodoItemType } from '../../constants/TYPES'
+import { ReactElement, useEffect, useState } from 'react'
+import { TodoItemPropType } from '../../constants/TYPES'
 import styles from './TodoItem.module.scss'
 
-const TodoItem = ({ todo }: TodoItemType): ReactElement => {
-  const [finished, setFinished] = useState<boolean>(todo.completed)
-
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFinished(!finished)
-  }
-
+const TodoItem = ({ todo, deleteTodo, changeHandler }: TodoItemPropType): ReactElement => {
   return (
     <li className={styles.list__item}>
       <div className={styles.content}>
         <div>
-          <input type='checkbox' onChange={changeHandler} checked={finished} />
+          <input
+            type='checkbox'
+            onChange={(e) => changeHandler(todo.id, e.target.checked)}
+            checked={todo.completed}
+          />
         </div>
-        <div>
-          <span className={styles.subTitle}>UserID: </span>
-          {todo.userId}
-        </div>
-        ,{' '}
         <div>
           <span className={styles.subTitle}>Title: </span> {todo.title}
         </div>
       </div>
-      <button className={styles.delete}>&#x2715;</button>
+      <button className={styles.delete} onClick={() => deleteTodo(todo.id)}>
+        &#x2715;
+      </button>
     </li>
   )
 }

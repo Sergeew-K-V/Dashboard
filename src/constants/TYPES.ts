@@ -7,12 +7,13 @@ export type User = {
 }
 
 export type Todo = {
-  userId: number
   id: number
   title: string
   completed: boolean
 }
 
-export type TodoItemType = {
+export type TodoItemPropType = {
   todo: Todo
+  deleteTodo: (id: number) => void
+  changeHandler: (id: number, checked: boolean) => void
 }

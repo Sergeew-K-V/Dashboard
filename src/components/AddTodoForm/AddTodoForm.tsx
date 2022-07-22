@@ -8,7 +8,6 @@ const AddTodoForm = (): ReactElement => {
   const [userId, setUserId] = useState<number>(0)
   const [todo, setTodo] = useState<Todo>({
     id: Date.now(),
-    userId: userId,
     title: userTodo,
     completed: checkedTodo,
   })
