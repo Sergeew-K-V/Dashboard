@@ -9,6 +9,7 @@ const Nav = (): ReactElement => {
         <NavLink to={'/'}>Home</NavLink>
         <NavLink to={'/dashboard'}>Dashboard</NavLink>
         <NavLink to={'/userspage'}>Users</NavLink>
+        <NavLink to={'/mint'}>Mint</NavLink>
       </div>
       <div className={styles.burger}></div>
     </nav>

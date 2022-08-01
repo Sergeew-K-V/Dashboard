@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import UsersPage from './Pages/UsersPage'
+import Mint from './Pages/Mint'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/userspage' element={<UsersPage />} />
+          <Route path='/mint' element={<Mint />} />
         </Routes>
       </Router>
     </div>

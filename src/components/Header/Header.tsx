@@ -18,6 +18,9 @@ const Header = ({}): ReactElement => {
     if (location.pathname === '/userspage') {
       setTitleText('Users Page')
     }
+    if (location.pathname === '/mint') {
+      setTitleText('Minting Page')
+    }
   }, [titleText])
 
   return (
