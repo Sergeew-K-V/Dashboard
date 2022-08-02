@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react'
-import { NavLink, useLocation, useParams } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../../assets/images/Practice_logo.jpeg'
 import Nav from '../Nav'
 import styles from './Header.module.scss'
@@ -8,6 +8,7 @@ const Header = ({}): ReactElement => {
   const [titleText, setTitleText] = useState<string>('Welcome Home')
 
   const location = useLocation()
+
   useEffect(() => {
     if (location.pathname === '/') {
       setTitleText('Welcome Home')

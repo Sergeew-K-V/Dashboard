@@ -2,8 +2,10 @@ import React, { ReactElement } from 'react'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import styles from './Mint.module.scss'
+import Web3 from 'web3'
 
 const Mint = (): ReactElement => {
+  var web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
   const btnHandler = (e: React.MouseEvent) => {
     console.log('clicked mint btn')
   }

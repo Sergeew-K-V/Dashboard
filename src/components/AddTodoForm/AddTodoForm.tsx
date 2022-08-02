@@ -1,5 +1,5 @@
-import React, { ReactElement, useEffect, useId, useState } from 'react'
-import { ListOfTodoPropType, Todo, TodoItemPropType } from '../../constants/TYPES'
+import React, { ReactElement, useEffect, useState } from 'react'
+import { ListOfTodoPropType, Todo } from '../../constants/TYPES'
 import styles from './AddTodoForm.module.scss'
 
 const AddTodoForm = ({ listOfTodos, setListOfTodos }: ListOfTodoPropType): ReactElement => {

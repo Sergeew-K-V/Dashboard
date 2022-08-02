@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect } from 'react'
 import { ListOfTodoPropType } from '../../constants/TYPES'
 import { useHttp } from '../../hooks/useHttp'
 import Loader from '../Loader'
